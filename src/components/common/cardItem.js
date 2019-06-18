@@ -1,10 +1,12 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
-const CardItem = props => (
-  <View style={styles.containerStyle}>
-    {props.children}
-  </View>
+const CardItem = (props) => (
+  // If style props has been passed use them, othewise use first defined element
+  // first element is styles.containerStyle
+  <View style={[styles.containerStyle, props.style]}>{props.children}</View>
+
+  //This trick is used here for pass new style - change flex direction from row to column
 );
 
 const styles = StyleSheet.create({
