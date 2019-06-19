@@ -1,26 +1,33 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
 import { CardItem } from './common';
+import { Actions } from 'react-native-router-flux';
 
 class ListItem extends Component {
-    render() {
-        const { name } = this.props.employee;
+  onRowPress() {
+    Actions.employeeCreate({ employee: this.props.employee });
+  }
 
-        return (
-            <CardItem>
-                <Text style={StyleSheet.titleStyle}>
-                    {name}
-                </Text>
-            </CardItem>
-        );
-    }
+  render() {
+    const { name } = this.props.employee;
+
+    return (
+      <TouchableWithoutFeedback onPress={this.onRowPress.bind(this)}>
+        <View>
+          <CardItem>
+            <Text style={styles.titleStyle}>{name}</Text>
+          </CardItem>
+        </View>
+      </TouchableWithoutFeedback>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
-    titleStyle: {
-        fontSize: 18,
-        paddingLeft: 15
-    }
+  titleStyle: {
+    fontSize: 18,
+    paddingLeft: 15
+  }
 });
 
 export default ListItem;
