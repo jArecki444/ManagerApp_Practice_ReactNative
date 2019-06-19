@@ -9,7 +9,7 @@ class ListItem extends Component {
         return (
             <CardItem>
                 <Text style={StyleSheet.titleStyle}>
-                {name}
+                    {name}
                 </Text>
             </CardItem>
         );
